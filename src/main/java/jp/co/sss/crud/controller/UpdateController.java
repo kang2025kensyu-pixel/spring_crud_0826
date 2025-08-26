@@ -74,12 +74,12 @@ public class UpdateController {
 	@PostMapping("/update/complete/{empId}")
 	public String updateRecord(@PathVariable("empId") Integer empId, @ModelAttribute EmployeeBean bean) {
 	    if (empId == null) {
-	        throw new IllegalArgumentException("PathVariable empId must not be null");
+	        throw new IllegalArgumentException("情報がありません");
 	    }
 
 	    // 社員情報の取得と存在チェック
 	    Employee existingEmp = employeeRepository.findById(empId)
-	        .orElseThrow(() -> new RuntimeException("Employee not found"));
+	        .orElseThrow(() -> new RuntimeException("情報がありません"));
 
 	    // 部署情報の取得と存在チェック
 	    Department dept = departmentRepository.findById(bean.getDeptId())
