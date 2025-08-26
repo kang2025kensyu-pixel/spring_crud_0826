@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout_4block :: layout(~{::body/content()})}">
+
+<head>
+	<title>社員一覧 | 社員管理システム</title>
+	<meta charset="UTF-8" />
+</head>
+
+<body class="admin user_list">
+	<h3>社員一覧画面</h3>
+<!--	<th:block th:if="${isAdmin}">-->
+		<div class="regist_link">
+			<a th:href="@{/regist/input}">新規社員登録</a>
+		</div>
+<!--	</th:block>-->
+	<th:block th:if="${#lists.isEmpty(employees)}">
+		<div class="message">
+			<p class="back_to_top_message">該当する社員がいません。</p>
+			<p class="back_to_top_link"><a th:href="@{/user/list}">社員一覧に戻る</a></p>
+		</div>
+	</th:block>
+	<table class="list_table" th:if="${not #lists.isEmpty(employees)}">
+		<tr>
+			<th>社員ID</th>
+			<th>社員名</th>
+			<th class="gender">性別</th>
+			<th class="address">住所</th>
+			<th class="birthday">生年月日</th>
+			<th class="authority">権限</th>
+			<th>部署名</th>
+		
+		<tr th:each="employee : ${employees}">
+
+			<th:block th:if="${isAdmin}">
+				
+					<a th:href="@{/update/input/{id}(id=${employee.empId})}">変更</a>
+				
+					<a th:href="@{/delete/confirm/{id}(id=${employee.empId})}">削除</a>
+				
+			</th:block>
+		</tr>
+
+		<tr th:each="employee : ${employees}">
+			
+			<td th:text="${employee.empId}"></td>
+			<td th:text="${employee.empName}"></td>
+			
+				<td th:text="${employee.gender}"></td>
+				<td th:text="${employee.address}"></td>
+				<td th:text="${employee.birthday}"></td>
+				<td th:text="${employee.authority}"></td>
+				
+				
+				<td class="deptName" th:text="${employee.department.deptName}"></td>
+				<td class="button">
+					<a th:href="@{/update/input/{id}(id=${employee.empId})}">変更</a>
+				</td>
+				<td class="button">
+					<a th:href="@{/delete/confirm/{id}(id=${employee.empId})}">削除</a>
+				</td>
+			
+		</tr>
+
+	</table>
+</body>
+
+</html>
