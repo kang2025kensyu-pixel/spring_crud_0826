@@ -26,25 +26,23 @@ public class UpdateController {
 	private EmployeeRepository employeeRepository;
 	@Autowired
 	private DepartmentRepository departmentRepository;
-
 	@GetMapping("/update/input/{empId}")
 	public String showUpdateForm(@PathVariable("empId") Integer empId, Model model) {
+	    Optional<Employee> employeeOpt = employeeRepository.findByEmpId(empId);
+	    if (employeeOpt.isPresent()) {
+	        Employee employee = employeeOpt.get();
+	        EmployeeBean employeeBean = new EmployeeBean();
+	        BeanUtils.copyProperties(employee, employeeBean);
 
-		Optional<Employee> employeeOpt = employeeRepository.findByEmpId(empId);
-		if (employeeOpt.isPresent()) {
-			Employee employee = employeeOpt.get();
-
-			EmployeeBean employeeBean = new EmployeeBean();
-			BeanUtils.copyProperties(employee, employeeBean);
-			//BeanUtils.copyProperties(form, employee, "empId");
-
-			model.addAttribute("employee", employeeBean);
-			return "/update/update_input";
-		} else {
-			return "redirect:/list";
-		}
+	        model.addAttribute("employee", employeeBean);
+	        model.addAttribute("departments", departmentRepository.findAll()); // ← 追加
+	        return "/update/update_input";
+	    } else {
+	        return "redirect:/list";
+	    }
 	}
 
+	
 	@PostMapping("/update/complete_check/{empId}")
 	public String checkUpdate(@PathVariable("empId") Integer empId, @ModelAttribute("employee") EmployeeForm form,
 			Model model) {
@@ -63,32 +61,44 @@ public class UpdateController {
 
 			model.addAttribute("employee", form);
 			return "/update/update_check";
+			
+			
 		} else {
 			model.addAttribute("error", "指定された部署が見つかりません。");
 			model.addAttribute("departments", departmentRepository.findAll());
+			
+
 			return "/update/update_input";
 		}
 	}
 	@PostMapping("/update/complete/{empId}")
 	public String updateRecord(@PathVariable("empId") Integer empId, @ModelAttribute EmployeeBean bean) {
+	    if (empId == null) {
+	        throw new IllegalArgumentException("PathVariable empId must not be null");
+	    }
 
-	
+	    // 社員情報の取得と存在チェック
 	    Employee existingEmp = employeeRepository.findById(empId)
 	        .orElseThrow(() -> new RuntimeException("Employee not found"));
 
-	    // IDは変更しないよう除外してコピー
-	    BeanUtils.copyProperties(bean, existingEmp, "empId", "department");
-
-	    // 部署情報を取得してセット
+	    // 部署情報の取得と存在チェック
 	    Department dept = departmentRepository.findById(bean.getDeptId())
 	        .orElseThrow(() -> new RuntimeException("Department not found"));
+
+	    // プロパティのコピー（部署は除外）
+	    BeanUtils.copyProperties(bean, existingEmp, "empId", "department");
+
+	    // 部署の設定
 	    existingEmp.setDepartment(dept);
 
-	    // 更新保存
+	 
 	    employeeRepository.save(existingEmp);
 
-	    return "redirect:/update/complete";
+	   
+	    return "redirect:/list";
 	}
+
+
 
 
 	@PostMapping("/update/back")
