@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import jp.co.sss.crud.bean.EmployeeBean;
 import jp.co.sss.crud.entity.Department;
 import jp.co.sss.crud.entity.Employee;
-import jp.co.sss.crud.form.EmployeeForm;
 import jp.co.sss.crud.repository.DepartmentRepository;
 import jp.co.sss.crud.repository.EmployeeRepository;
 
@@ -25,6 +24,7 @@ public class UpdateController {
 	private EmployeeRepository employeeRepository;
 	@Autowired
 	private DepartmentRepository departmentRepository;
+	
 	@GetMapping("/update/input/{empId}")
 	public String showUpdateForm(@PathVariable("empId") Integer empId, Model model) {
 	    Optional<Employee> employeeOpt = employeeRepository.findByEmpId(empId);
@@ -34,7 +34,7 @@ public class UpdateController {
 	        BeanUtils.copyProperties(employee, employeeBean);
 
 	        model.addAttribute("employee", employeeBean);
-	        model.addAttribute("departments", departmentRepository.findAll()); // ← 追加
+	        model.addAttribute("departments", departmentRepository.findAll()); 
 	        return "/update/update_input";
 	    } else {
 	        return "redirect:/list";
@@ -42,52 +42,30 @@ public class UpdateController {
 	}
 
 
-
-
 	@PostMapping("/update/complete_check/{empId}")
-	public String checkUpdate(@PathVariable("empId") Integer empId, @ModelAttribute("employee") EmployeeForm form,Model model) {
-		Employee employee = employeeRepository.findByEmpId(empId).get();
-		BeanUtils.copyProperties(form, employee, "empId");
-		if (!StringUtils.hasText(form.getEmpName()) || !StringUtils.hasText(form.getEmpPass())
-				|| !StringUtils.hasText(form.getAddress()) || !StringUtils.hasText(form.getBirthday())) {
-			model.addAttribute("error", "全ての項目を入力してください。");
-			model.addAttribute("departments", departmentRepository.findAll());
-			return "/update/update_input";
-		}
-		Optional<Department> deptOptional = departmentRepository.findById(form.getDeptId());
-		if (deptOptional.isPresent()) {
+	public String checkUpdate(@PathVariable("empId") Integer empId, @ModelAttribute("employee") EmployeeBean bean, Model model) {
+	    // フォームデータの検証
+	    if (!StringUtils.hasText(bean.getEmpName()) || !StringUtils.hasText(bean.getEmpPass())
+	            || !StringUtils.hasText(bean.getAddress()) || !StringUtils.hasText(bean.getBirthday())) {
+	        model.addAttribute("error", "全ての項目を入力してください。");
+	        model.addAttribute("departments", departmentRepository.findAll());
+	        return "/update/update_input";
+	    }
 
-			form.setDepartment(deptOptional.get());
-
-			model.addAttribute("employee", form);
-			return "/update/update_check";
-			
-			
-		} else {
-			model.addAttribute("error", "指定された部署が見つかりません。");
-			model.addAttribute("departments", departmentRepository.findAll());
-			
-
-			return "/update/update_input";
-		}
-	}
-	@GetMapping("/update/complete_check/{empId}")
-	public String completeCheck(@PathVariable Integer empId, Model model) {
-	    Optional<Employee> employeeOpt = employeeRepository.findByEmpId(empId);
-	    if (employeeOpt.isPresent()) {
-	        Employee employee = employeeOpt.get();
-	        EmployeeBean employeeBean = new EmployeeBean();
-	        BeanUtils.copyProperties(employee, employeeBean);
-
-	        model.addAttribute("employee", employeeBean);
-	        model.addAttribute("departments", departmentRepository.findAll()); 
-	        return "/update/update_check"; 
+	    Optional<Department> deptOptional = departmentRepository.findById(bean.getDeptId());
+	    if (deptOptional.isPresent()) {
+	        bean.setDepartment(deptOptional.get());
+	        bean.setDeptName(bean.getDepartment().getDeptName());
+	        
+	        model.addAttribute("employee", bean);
+	        return "/update/update_check";
 	    } else {
-	        return "redirect:/list";
+	        model.addAttribute("error", "指定された部署が見つかりません。");
+	        model.addAttribute("departments", departmentRepository.findAll());
+	        return "/update/update_input";
 	    }
 	}
-
-
+	
 	@PostMapping("/update/complete/{empId}")
 	public String updateRecord(@PathVariable("empId") Integer empId, @ModelAttribute EmployeeBean bean) {
 	    if (empId == null) {
@@ -114,15 +92,18 @@ public class UpdateController {
 	   
 	    return "redirect:/list";
 	}
-
+	
+	@GetMapping("/update/complete_page/{empId}")
+	public String showUpdateComplete() {
+		return "/update/update_complete";
+	}
 
 
 
 	@PostMapping("/update/back")
-	public String returnToInput(@ModelAttribute("employee") EmployeeForm form, Model model) {
-	    model.addAttribute("employee", form);
+	public String returnToInput(@ModelAttribute("employee") EmployeeBean bean, Model model) {
+	    model.addAttribute("employee", bean);
 	    model.addAttribute("departments", departmentRepository.findAll());
 	    return "/update/update_input";
 	}
-
 }

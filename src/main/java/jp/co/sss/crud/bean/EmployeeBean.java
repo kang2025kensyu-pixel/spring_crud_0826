@@ -1,94 +1,96 @@
 package jp.co.sss.crud.bean;
 
+import jp.co.sss.crud.entity.Department;
+
 public class EmployeeBean {
-	private Integer empId;
+    private Integer empId;
+    private String empPass;
+    private String empName;
+    private Integer gender;
+    private String address;
+    private String birthday;
+    private Integer authority;
+    private Integer deptId;
+    private String deptName;
+    private Department department;
 
-	private String empPass;
+    public Integer getEmpId() {
+        return empId;
+    }
 
-	private String empName;
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
+    }
 
-	private Integer gender;
+    public String getEmpPass() {
+        return empPass;
+    }
 
-	private String address;
+    public void setEmpPass(String empPass) {
+        this.empPass = empPass;
+    }
 
-	private String birthday;
+    public String getEmpName() {
+        return empName;
+    }
 
-	private Integer authority;
+    public void setEmpName(String empName) {
+        this.empName = empName;
+    }
 
-	private Integer deptId;
+    public Integer getGender() {
+        return gender;
+    }
 
-	public Integer getEmpId() {
-		return empId;
-	}
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
 
-	public void setEmpId(Integer empId) {
-		this.empId = empId;
-	}
+    public String getBirthday() {
+        return birthday;
+    }
 
-	public String getEmpPass() {
-		return empPass;
-	}
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
 
-	public void setEmpPass(String empPass) {
-		this.empPass = empPass;
-	}
+    public Integer getAuthority() {
+        return authority;
+    }
 
-	public String getEmpName() {
-		return empName;
-	}
+    public void setAuthority(Integer authority) {
+        this.authority = authority;
+    }
 
-	public void setEmpName(String empName) {
-		this.empName = empName;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public Integer getGender() {
-		return gender;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public void setGender(Integer gender) {
-		this.gender = gender;
-	}
+    public Integer getDeptId() {
+        return deptId;
+    }
 
-	public String getBirthday() {
-		return birthday;
-	}
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
+    }
 
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
+    public String getDeptName() {
+        return deptName;
+    }
 
-	public Integer getAuthority() {
-		return authority;
-	}
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
 
-	public void setAuthority(Integer authority) {
-		this.authority = authority;
-	}
+    public Department getDepartment() {
+        return department;
+    }
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	private String deptName;
-
-	public String getDeptName() {
-		return deptName;
-	}
-
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
-
-	public Integer getDeptId() {
-		return deptId;
-	}
-
-	public void setDeptId(Integer deptId) {
-		this.deptId = deptId;
-	}
-
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 }

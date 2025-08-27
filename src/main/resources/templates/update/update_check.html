@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout_4block :: layout(~{::body/content()})}">
 
 <head>
-	<meta charset="UTF-8">
-	<title>社員変更確認 | 社員管理システム</title>
+	<title>社員登録確認 | シェアードショップ</title>
+	<meta charset="UTF-8" />
 </head>
 
-<body class="admin user_update_check_admin">
-	<h3>社員変更確認画面</h3>
-
-	<!-- class名とボタンの変更は行なわないこと。-->
+<body class="admin user_regist_check_admin">
+	<h3>社員登録確認画面</h3>
 	<div class="update">
 		<div class="form">
 			<div class="label">パスワード：</div>
@@ -17,69 +15,66 @@
 		</div>
 		<div class="form">
 			<div class="label">社員名：</div>
-			<div class="input" th:text="${employee.empName}"></div>
+			<div class="input" th:text="${employee.empName}">社員名</div>
 		</div>
 		<div class="form">
 			<div class="label">性別：</div>
 			<div class="input" th:switch="${employee.gender}">
 				<span th:case="1">男性</span>
 				<span th:case="2">女性</span>
+				<span th:case="*">未設定</span>
 			</div>
-
 		</div>
 		<div class="form">
 			<div class="label">住所：</div>
-			<div class="input" th:text="${employee.address}"></div>
+			<div class="input" th:text="${employee.address}">住所</div>
 		</div>
 		<div class="form">
 			<div class="label">生年月日：</div>
-			<div class="input" th:text="${employee.birthday}"></div>
+			<div class="input" th:text="${employee.birthday}">生年月日</div>
 		</div>
 		<div class="form">
 			<div class="label">権限：</div>
 			<div class="input" th:switch="${employee.authority}">
 				<span th:case="1">一般</span>
 				<span th:case="2">管理者</span>
+				<span th:case="*">未設定</span>
 			</div>
 		</div>
-		</th:block>
-
 		<div class="form">
 			<div class="label">部署名：</div>
-			<div class="input" th:text="${employee.department.deptName}"></div>
+			<div class="input" th:text="${employee.department != null ? employee.department.deptName : '未設定'}">部署名</div>
 		</div>
-		<form th:action="@{'/update/complete/' + ${employee.empId}}" method="post" th:object="${employee}">
-
-
+		<form method="post" th:action="@{/update/complete/{empId}(empId=${employee.empId})}" th:object="${employee}">
+			<input type="hidden" th:field="*{empId}" />
+			<input type="hidden" th:field="*{empPass}" />
+			<input type="hidden" th:field="*{empName}" />
+			<input type="hidden" th:field="*{gender}" />
+			<input type="hidden" th:field="*{address}" />
+			<input type="hidden" th:field="*{birthday}" />
+			<input type="hidden" th:field="*{authority}" />
+			<input type="hidden" th:field="*{deptId}" />
 			<div class="form">
-
 				<div class="label"></div>
-
-
 				<div class="input">
-
-					<input type="hidden" th:field="*{empPass}" />
-					<input type="hidden" th:field="*{empName}" />
-					<input type="hidden" th:field="*{gender}" />
-					<input type="hiddsen" th:field="*{address}" />
-					<input type="hidden" th:field="*{birthday}" />
-					<input type="hidden" th:field="*{authority}" />
-					<input type="hidden" th:field="*{department.deptId}" />
-					<input type="submit" value="変更" />
+					<input type="submit" value="登録" />
 				</div>
 			</div>
 		</form>
-		<form th:action="@{/update/back}" method="post" th:object="${employee}">
+
+
+		<form method="post" th:action="@{/update/back}" th:object="${employee}">
+			  <input type="hidden" th:field="*{empId}" />
+			<input type="hidden" th:field="*{empPass}" />
+			<input type="hidden" th:field="*{empName}" />
+			<input type="hidden" th:field="*{gender}" />
+			<input type="hidden" th:field="*{address}" />
+			<input type="hidden" th:field="*{birthday}" />
+			<input type="hidden" th:field="*{authority}" />
+			<input type="hidden" th:field="*{deptId}" />
 			<div class="form">
 				<div class="label"></div>
 				<div class="input">
-					<input type="hidden" th:field="*{employee.empPass}" />
-					<input type="hidden" th:field="*{employee.empName}" />
-					<input type="hidden" th:field="*{employee.gender}" />
-					<input type="hidden" th:field="*{employee.address}" />
-					<input type="hidden" th:field="*{employee.birthday}" />
-					<input type="hidden" th:field="*{employee.authority}" />
-					<input type="hidden" th:field="*{employee.department.deptId}" />
 					<input type="submit" value="戻る" />
 				</div>
 			</div>

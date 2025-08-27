@@ -12,7 +12,6 @@
 		<form th:action="@{'/update/complete_check/' + ${employee.empId}}" method="post" th:object="${employee}">
 
 
-
 			<p>
 				<span th:each="error:${#fields.detailedErrors()}">
 					<span th:text="${error.message}"></span><br />
