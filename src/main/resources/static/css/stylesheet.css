@@ -140,12 +140,16 @@ div.message {
 }
 
 /* ---- ボタン全般 ---- */
-input[type=submit] {
-	border-width: 1px;
-	border-style: solid;
-	border-color: #808080;
-	padding: 0px 10px;
-	border-radius: 6px;
-	color: #12526d;
+input[type=submit],
+a.button-style {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #808080;
+    padding: 0px 10px;
+    border-radius: 6px;
+    color: #12526d;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #f8f8f8; 
 }
 

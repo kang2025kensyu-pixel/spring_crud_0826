@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jp.co.sss.crud.bean.EmployeeBean;
 import jp.co.sss.crud.entity.Department;
@@ -42,10 +41,11 @@ public class UpdateController {
 	    }
 	}
 
-	
+
+
+
 	@PostMapping("/update/complete_check/{empId}")
-	public String checkUpdate(@PathVariable("empId") Integer empId, @ModelAttribute("employee") EmployeeForm form,
-			Model model) {
+	public String checkUpdate(@PathVariable("empId") Integer empId, @ModelAttribute("employee") EmployeeForm form,Model model) {
 		Employee employee = employeeRepository.findByEmpId(empId).get();
 		BeanUtils.copyProperties(form, employee, "empId");
 		if (!StringUtils.hasText(form.getEmpName()) || !StringUtils.hasText(form.getEmpPass())
@@ -71,6 +71,23 @@ public class UpdateController {
 			return "/update/update_input";
 		}
 	}
+	@GetMapping("/update/complete_check/{empId}")
+	public String completeCheck(@PathVariable Integer empId, Model model) {
+	    Optional<Employee> employeeOpt = employeeRepository.findByEmpId(empId);
+	    if (employeeOpt.isPresent()) {
+	        Employee employee = employeeOpt.get();
+	        EmployeeBean employeeBean = new EmployeeBean();
+	        BeanUtils.copyProperties(employee, employeeBean);
+
+	        model.addAttribute("employee", employeeBean);
+	        model.addAttribute("departments", departmentRepository.findAll()); 
+	        return "/update/update_check"; 
+	    } else {
+	        return "redirect:/list";
+	    }
+	}
+
+
 	@PostMapping("/update/complete/{empId}")
 	public String updateRecord(@PathVariable("empId") Integer empId, @ModelAttribute EmployeeBean bean) {
 	    if (empId == null) {
@@ -102,8 +119,10 @@ public class UpdateController {
 
 
 	@PostMapping("/update/back")
-	public String returnToInput(@ModelAttribute("employee") EmployeeForm form, RedirectAttributes redirectAttributes) {
-		redirectAttributes.addFlashAttribute("employee", form);
-		return "redirect:/update/input/" + form.getEmpId();
+	public String returnToInput(@ModelAttribute("employee") EmployeeForm form, Model model) {
+	    model.addAttribute("employee", form);
+	    model.addAttribute("departments", departmentRepository.findAll());
+	    return "/update/update_input";
 	}
+
 }
