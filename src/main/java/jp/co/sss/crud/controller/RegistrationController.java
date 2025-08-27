@@ -9,11 +9,13 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.validation.Valid;
 import jp.co.sss.crud.entity.Department;
 import jp.co.sss.crud.entity.Employee;
 import jp.co.sss.crud.form.EmployeeForm;
@@ -31,22 +33,31 @@ public class RegistrationController {
 
     @GetMapping("/regist/input")
     public String showRegistrationForm(@ModelAttribute("employee") EmployeeForm form, Model model) {
-        List<Department> departments = departmentRepository.findAll();
-        model.addAttribute("departments", departments);
+        model.addAttribute("employee", form);
+        List<Department> departments = departmentRepository.findAll(); // 部署一覧を取得
+        model.addAttribute("departments", departments); // テンプレートに渡す
         return "/regist/regist_input";
     }
 
+
+ 
+
+   
+ 
+
     @PostMapping("/regist/check")
-    public String checkRegistration(@ModelAttribute("employee") EmployeeForm form, Model model) {
-        Optional<Department> deptOptional = departmentRepository.findById(form.getDeptId());
-        if (deptOptional.isPresent()) {
-            form.setDepartment(deptOptional.get());
-            model.addAttribute("employee", form);
-            return "/regist/regist_check";
-        } else {
-           
-            return "redirect:/regist/input";
+    public String checkRegistration(@Valid @ModelAttribute("employee") EmployeeForm form,BindingResult result, Model model) {
+    	 Optional<Department> deptOptional = departmentRepository.findById(form.getDeptId());
+    	 form.setDepartment(deptOptional.get());
+         model.addAttribute("employee", form);
+         model.addAttribute("departments", departmentRepository.findAll());
+    	 if (result.hasErrors()) {
+    		
+            return "/regist/regist_input";
         }
+
+        
+        return "/regist/regist_check";
     }
 
 
@@ -84,10 +95,11 @@ public class RegistrationController {
     public String showRegistrationComplete() {
         return "/regist/regist_complete";
     }
-
     @PostMapping("/regist/return")
-    public String returnToInput(@ModelAttribute("employee") EmployeeForm form, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("employee", form);
-        return "redirect:/regist/input";
+    public String returnToInput(@Valid @ModelAttribute("employee") EmployeeForm form, Model model) {
+        model.addAttribute("employee", form);
+        model.addAttribute("departments", departmentRepository.findAll());
+        return "/regist/regist_input";
     }
+
 }

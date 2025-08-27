@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import jp.co.sss.crud.entity.Employee;
 import jp.co.sss.crud.form.LoginForm;
-import jp.co.sss.crud.repository.EmployeeRepository;
+import jp.co.sss.crud.repository.EmployeeRepository; 
 
 @Controller
 public class IndexController {
@@ -23,13 +23,13 @@ public class IndexController {
 	@Autowired
 	EmployeeRepository employeeRepository;
 
-	@RequestMapping(path = "/", method = RequestMethod.GET)
+	@Valid@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String index(@ModelAttribute LoginForm loginForm, HttpSession session) {
 		session.invalidate();
 		return "index";
 	}
 
-	@RequestMapping(path = "/login", method = RequestMethod.POST)
+	@Valid @RequestMapping(path = "/login", method = RequestMethod.POST)
 	public String login(@Valid @ModelAttribute LoginForm form, BindingResult result, HttpSession session, Model model) {
 	    if (result.hasErrors()) {
 	        model.addAttribute("errors", result.getAllErrors());
@@ -69,7 +69,7 @@ public class IndexController {
 	//            
 	//		}
 
-	@RequestMapping(path = "/logout", method = RequestMethod.GET)
+	@Valid@RequestMapping(path = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/"; // Redirect to the login page

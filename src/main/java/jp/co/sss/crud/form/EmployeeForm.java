@@ -21,8 +21,7 @@ public class EmployeeForm {
 	@NotNull
 	private String empName;
 
-	@NotNull
-	private Integer age;
+
 
 
 	/** 性別 */
@@ -34,6 +33,7 @@ public class EmployeeForm {
 	private String address;
 
 	/** 生年月日 */
+	
 	@NotNull
 	private String birthday;
 

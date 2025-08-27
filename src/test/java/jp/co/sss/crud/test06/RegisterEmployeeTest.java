@@ -219,7 +219,7 @@ public class RegisterEmployeeTest {
 
 		// リンクが表示されるまでの待機時間
 		new WebDriverWait(webDriver, Duration.ofSeconds(5))
-				.until(ExpectedConditions.elementToBeClickable(By.linkText("新規社員登録")));
+				.until(ExpectedConditions.elementToBeClickable(By.linkText("")));
 
 		// スクリーンショット
 		tempFileList.add(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE));

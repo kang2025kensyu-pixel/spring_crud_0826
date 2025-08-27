@@ -43,7 +43,7 @@ public class UpdateController {
 
 
 	@PostMapping("/update/complete_check/{empId}")
-	public String checkUpdate(@PathVariable("empId") Integer empId, @ModelAttribute("employee") EmployeeBean bean, Model model) {
+	public String checkUpdate( @PathVariable("empId") Integer empId, @ModelAttribute("employee") EmployeeBean bean, Model model) {
 	    // フォームデータの検証
 	    if (!StringUtils.hasText(bean.getEmpName()) || !StringUtils.hasText(bean.getEmpPass())
 	            || !StringUtils.hasText(bean.getAddress()) || !StringUtils.hasText(bean.getBirthday())) {

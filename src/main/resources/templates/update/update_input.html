@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout_4block :: layout(~{::body/content()})}">
 
 <head>
-	<title>会員変更入力 | シェアードショップ</title>
+	<title>会員変更入力</title>
 	<meta charset="UTF-8" />
 </head>
 
@@ -68,8 +68,7 @@
 						<option th:each="dept : ${departments}" th:value="${dept.deptId}" th:text="${dept.deptName}">
 						</option>
 
-						<option th:each="dept : ${departments}" th:value="${dept.deptId}" th:text="${dept.deptName}">
-						</option>
+						
 					</select>
 				</div>
 			</div>
