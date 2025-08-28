@@ -1,5 +1,7 @@
 package jp.co.sss.crud.bean;
 
+import java.util.Date;
+
 import jp.co.sss.crud.entity.Department;
 
 public class EmployeeBean {
@@ -8,7 +10,7 @@ public class EmployeeBean {
     private String empName;
     private Integer gender;
     private String address;
-    private String birthday;
+    private Date birthday;
     private Integer authority;
     private Integer deptId;
     private String deptName;
@@ -46,11 +48,11 @@ public class EmployeeBean {
         this.gender = gender;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

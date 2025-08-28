@@ -72,7 +72,7 @@ public class JudgeAuthorityTest {
 	public void 正常系_社員一覧表示_一般権限() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\11_JudgeAuthorityTest\\";
 
@@ -110,7 +110,7 @@ public class JudgeAuthorityTest {
 	public void 正常系_権限判定操作_一般権限での登録画面アクセス() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\11_JudgeAuthorityTest\\";
 
@@ -151,7 +151,7 @@ public class JudgeAuthorityTest {
 	public void 正常系_社員変更操作_変更完了_一般権限() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\11_JudgeAuthorityTest\\";
 

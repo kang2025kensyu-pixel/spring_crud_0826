@@ -53,7 +53,7 @@ public class LoginTest {
 	public void 正常系_ログイン操作_画面遷移_一般権限() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\01_LoginTest\\";
 
@@ -88,7 +88,7 @@ public class LoginTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		// 検証のため要素を取得
 		WebElement headerMsg = webDriver.findElement(By.cssSelector("header .user_info"));
 
@@ -103,7 +103,7 @@ public class LoginTest {
 	public void 正常系_ログイン操作_画面遷移_管理者権限() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\01_LoginTest\\";
 

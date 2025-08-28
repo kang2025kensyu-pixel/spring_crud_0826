@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 
 public class LoginForm {
-	
+
 	/** 社員ID */
 	@Max(value = 99999)
 	@NotNull

@@ -72,7 +72,7 @@ public class JudgeIsLoginedTest {
 	public void 正常系_ログイン判定操作_ログアウト後の登録画面アクセス() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\10_JudgeIsLoginedTest\\";
 
@@ -120,7 +120,7 @@ public class JudgeIsLoginedTest {
 	public void 正常系_ログイン判定操作_ブラウザ終了後の登録画面アクセス() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\10_JudgeIsLoginedTest\\";
 

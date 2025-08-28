@@ -73,7 +73,7 @@ public class SearchDeptIdTest {
 	public void 正常系_部署検索操作_選択_経理部() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\05_SearchDeptIdTest\\";
 
@@ -109,8 +109,7 @@ public class SearchDeptIdTest {
 		}
 
 		WebElement empNameOfTanaka = webDriver.findElement(By.cssSelector("table tr:nth-of-type(2) td:nth-of-type(2)"));
-		WebElement empNameOfWatanabe = webDriver
-				.findElement(By.cssSelector("table tr:nth-of-type(3) td:nth-of-type(2)"));
+		WebElement empNameOfWatanabe = webDriver.findElement(By.cssSelector("table tr:nth-of-type(3) td:nth-of-type(2)"));
 
 		// 検証
 		assertEquals("田中二郎", empNameOfTanaka.getText());
@@ -123,7 +122,7 @@ public class SearchDeptIdTest {
 	public void 正常系_部署検索操作_選択_総務部() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\05_SearchDeptIdTest\\";
 

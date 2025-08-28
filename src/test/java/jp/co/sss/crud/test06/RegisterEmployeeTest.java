@@ -73,7 +73,7 @@ public class RegisterEmployeeTest {
 	public void 正常系_社員登録操作_登録完了() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\06_RegisterEmployeeTest\\";
 
@@ -211,7 +211,7 @@ public class RegisterEmployeeTest {
 	public void 正常系_社員登録操作_入力画面_戻るボタンを押下する() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\06_RegisterEmployeeTest\\";
 
@@ -262,7 +262,7 @@ public class RegisterEmployeeTest {
 	public void 正常系_社員登録操作_確認画面_戻るボタンを押下する() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\06_RegisterEmployeeTest\\";
 

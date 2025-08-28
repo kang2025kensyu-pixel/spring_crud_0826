@@ -6,7 +6,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +23,7 @@ public class UpdateController {
 	private EmployeeRepository employeeRepository;
 	@Autowired
 	private DepartmentRepository departmentRepository;
-	
+
 	@GetMapping("/update/input/{empId}")
 	public String showUpdateForm(@PathVariable("empId") Integer empId, Model model) {
 	    Optional<Employee> employeeOpt = employeeRepository.findByEmpId(empId);
@@ -34,7 +33,7 @@ public class UpdateController {
 	        BeanUtils.copyProperties(employee, employeeBean);
 
 	        model.addAttribute("employee", employeeBean);
-	        model.addAttribute("departments", departmentRepository.findAll()); 
+	        model.addAttribute("departments", departmentRepository.findAll());
 	        return "/update/update_input";
 	    } else {
 	        return "redirect:/list";
@@ -44,19 +43,19 @@ public class UpdateController {
 
 	@PostMapping("/update/complete_check/{empId}")
 	public String checkUpdate( @PathVariable("empId") Integer empId, @ModelAttribute("employee") EmployeeBean bean, Model model) {
-	    // フォームデータの検証
-	    if (!StringUtils.hasText(bean.getEmpName()) || !StringUtils.hasText(bean.getEmpPass())
-	            || !StringUtils.hasText(bean.getAddress()) || !StringUtils.hasText(bean.getBirthday())) {
-	        model.addAttribute("error", "全ての項目を入力してください。");
-	        model.addAttribute("departments", departmentRepository.findAll());
-	        return "/update/update_input";
-	    }
+	 
+//	    if (!StringUtils.hasText(bean.getEmpName()) || !StringUtils.hasText(bean.getEmpPass())
+//	            || !StringUtils.hasText(bean.getAddress()) || !StringUtils.hasText(bean.getBirthday())) {
+//	        model.addAttribute("error", "全ての項目を入力してください。");
+//	        model.addAttribute("departments", departmentRepository.findAll());
+//	        return "/update/update_input";
+//	    }
 
 	    Optional<Department> deptOptional = departmentRepository.findById(bean.getDeptId());
 	    if (deptOptional.isPresent()) {
 	        bean.setDepartment(deptOptional.get());
 	        bean.setDeptName(bean.getDepartment().getDeptName());
-	        
+
 	        model.addAttribute("employee", bean);
 	        return "/update/update_check";
 	    } else {
@@ -65,7 +64,7 @@ public class UpdateController {
 	        return "/update/update_input";
 	    }
 	}
-	
+
 	@PostMapping("/update/complete/{empId}")
 	public String updateRecord(@PathVariable("empId") Integer empId, @ModelAttribute EmployeeBean bean) {
 	    if (empId == null) {
@@ -86,13 +85,13 @@ public class UpdateController {
 	    // 部署の設定
 	    existingEmp.setDepartment(dept);
 
-	 
+
 	    employeeRepository.save(existingEmp);
 
-	   
-	    return "redirect:/list";
+
+	    return "/update/update_complete";
 	}
-	
+
 	@GetMapping("/update/complete_page/{empId}")
 	public String showUpdateComplete() {
 		return "/update/update_complete";

@@ -53,7 +53,7 @@ public class ValidLoginTest {
 	public void 異常系_ログイン操作_社員ID_空文字入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidLoginTest\\";
 
@@ -105,7 +105,7 @@ public class ValidLoginTest {
 	public void 異常系_ログイン操作_社員ID_桁数オーバー入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidLoginTest\\";
 
@@ -158,7 +158,7 @@ public class ValidLoginTest {
 	public void 異常系_ログイン操作_社員ID_文字種エラー1入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidLoginTest\\";
 
@@ -211,7 +211,7 @@ public class ValidLoginTest {
 	public void 異常系_ログイン操作_社員ID_文字種エラー2入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidLoginTest\\";
 
@@ -264,7 +264,7 @@ public class ValidLoginTest {
 	public void 異常系_ログイン操作_パスワード_空文字入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidLoginTest\\";
 
@@ -316,7 +316,7 @@ public class ValidLoginTest {
 	public void 異常系_ログイン操作_ログインエラーメッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidLoginTest\\";
 

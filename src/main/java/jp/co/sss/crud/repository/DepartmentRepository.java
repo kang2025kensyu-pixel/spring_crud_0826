@@ -10,5 +10,6 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
 
 
 
-	 Optional<Department> findById(Integer deptId);
+	 @Override
+	Optional<Department> findById(Integer deptId);
 }

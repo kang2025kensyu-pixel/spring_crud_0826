@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import jp.co.sss.crud.entity.Employee;
 import jp.co.sss.crud.form.LoginForm;
-import jp.co.sss.crud.repository.EmployeeRepository; 
+import jp.co.sss.crud.repository.EmployeeRepository;
 
 @Controller
 public class IndexController {
@@ -41,7 +41,7 @@ public class IndexController {
 	    if (employee != null && employee.getEmpPass().equals(form.getEmpPass())) {
 	        session.setAttribute("user", employee);
 	        System.out.println("ここまで");
-	        model.addAttribute("user", employee); 
+	        model.addAttribute("user", employee);
 	        System.out.println("ここまで2");
 	        return "redirect:/list";
 	    } else {
@@ -50,23 +50,23 @@ public class IndexController {
 	    }
 	}
 
-	
+
 	//＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 //	TODO　ログアウトボタン表示
 //	エラーメッセージ表示
 //	ログイン後名前確認
 	//＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 	//		Optional<Employee> employeeOptional = employeeRepository.findByEmpId(form.getEmpId());
-	//      
+	//
 	//
 	//            Employee employee = employeeOptional.get();
 	//            if (employee.getEmpPass().equals(form.getEmpPass())) {
 	//                 return "redirect:/list"; // ログイン
 	//               }
-	//          
+	//
 	//      model.addAttribute("loginError", "社員IDまたはパスワードが正しくありません");
 	//      return "index";
-	//            
+	//
 	//		}
 
 	@Valid@RequestMapping(path = "/logout", method = RequestMethod.GET)

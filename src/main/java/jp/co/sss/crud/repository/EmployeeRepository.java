@@ -29,15 +29,16 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 //
 //			  Optional<User>는 0개 또는 1개의 User 객체를 담는 **컨테이너(wrapper)**이다. 주로 단일 사용자 정보를 조회할 때 사용하며, 데이터가 존재하지 않을 수도 있음을 명확하게 표현한다.
 //			[출처] [Java/Spring] List<User>와 Optional<User>의 차이|작성자 vision21000
-
+	List<Employee> findAllByOrderByEmpIdDesc();
+	List<Employee> findByDepartment_DeptIdOrderByEmpIdDesc(Integer deptId);
 	  Optional<Employee> findTopByOrderByEmpIdDesc();
-	    Optional<Employee> findByEmpId(Integer empId); 
+	    Optional<Employee> findByEmpId(Integer empId);
 	    List<Employee> findByEmpNameLikeOrderByEmpIdAsc(String empName);
-	    
+	    List<Employee> findByEmpNameLikeOrderByEmpIdDesc(String empName);
 	    List<Employee> findByDepartment_DeptIdOrderByEmpIdAsc(Integer deptId);
 //		List<Employee> findByEmpNameLikeOrderByEmpIdAsc(String string);
 		List<Employee> findAllByOrderByEmpIdAsc();
-	
 
-	
+
+
 }

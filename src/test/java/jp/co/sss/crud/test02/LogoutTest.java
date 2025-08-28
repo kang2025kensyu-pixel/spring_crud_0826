@@ -53,7 +53,7 @@ public class LogoutTest {
 	public void 正常系_ログアウト操作() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\02_LogoutTest\\";
 
@@ -73,7 +73,7 @@ public class LogoutTest {
 		webDriver.findElement(By.cssSelector("input[type='submit']")).submit();
 
 		WebElement logoutWebElement = webDriver.findElement(By.linkText("ログアウト"));
-		
+
 		// スクリーンショット
 		tempFileList.add(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE));
 

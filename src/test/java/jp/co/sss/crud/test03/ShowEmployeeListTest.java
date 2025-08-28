@@ -52,7 +52,7 @@ public class ShowEmployeeListTest {
 	@Order(1)
 	public void 正常系_社員一覧表示_一般権限() {
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\03_ShowEmployeeTest\\";
 
@@ -105,7 +105,7 @@ public class ShowEmployeeListTest {
 	@Order(2)
 	public void 正常系_社員一覧表示_管理者権限() {
 
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\03_ShowEmployeeTest\\";
 

@@ -1,5 +1,6 @@
 package jp.co.sss.crud.entity;
 
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,7 +29,7 @@ public class Employee {
 	private String address;
 
 	@Column
-	private String birthday;
+	private Date birthday;
 
 	@Column
 	private Integer authority;
@@ -39,8 +40,8 @@ public class Employee {
 
 	// (Getters and Setters for all fields...)
 
- 
-	
+
+
 	public void setEmpId(Integer empId) {
 		this.empId = empId;
 	}
@@ -78,12 +79,12 @@ public class Employee {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public void setBirthday(String birthday) {
+	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 
 		}
 
-	public String getBirthday() {
+	public Date getBirthday() {
 		return birthday;
 	}
 

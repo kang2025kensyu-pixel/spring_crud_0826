@@ -84,7 +84,7 @@ public class ValidRegisterEmployeeTest {
 	public void 異常系_社員登録操作_パスワード_空文字入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidRegisterEmployeeTest\\";
 
@@ -160,7 +160,7 @@ public class ValidRegisterEmployeeTest {
 	public void 異常系_社員登録操作_パスワード_桁数オーバー入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidRegisterEmployeeTest\\";
 
@@ -237,7 +237,7 @@ public class ValidRegisterEmployeeTest {
 	public void 異常系_社員登録操作_社員名_空文字入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidRegisterEmployeeTest\\";
 
@@ -315,7 +315,7 @@ public class ValidRegisterEmployeeTest {
 	public void 異常系_社員登録操作_社員名_桁数オーバー入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidRegisterEmployeeTest\\";
 
@@ -392,7 +392,7 @@ public class ValidRegisterEmployeeTest {
 	public void 異常系_社員登録操作_住所_空文字入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidRegisterEmployeeTest\\";
 
@@ -470,7 +470,7 @@ public class ValidRegisterEmployeeTest {
 	public void 異常系_社員登録操作_住所_桁数オーバー入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidRegisterEmployeeTest\\";
 
@@ -548,7 +548,7 @@ public class ValidRegisterEmployeeTest {
 	public void 異常系_社員登録操作_生年月日_空文字入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidRegisterEmployeeTest\\";
 
@@ -626,7 +626,7 @@ public class ValidRegisterEmployeeTest {
 	public void 異常系_社員登録操作_生年月日_非対応日付形式入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidRegisterEmployeeTest\\";
 
@@ -705,7 +705,7 @@ public class ValidRegisterEmployeeTest {
 	public void 異常系_社員登録操作_生年月日_非存在日付入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidRegisterEmployeeTest\\";
 

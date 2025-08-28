@@ -8,6 +8,9 @@
 
 <body class="admin user_delete_check_admin">
 	<h3>社員削除確認画面</h3>
+	<div th:if="${error}" class="error-message">
+		<p th:text="${error}"></p>
+	</div>
 	<div class="update">
 		<div class="form">
 			<div class="label">パスワード：</div>
@@ -30,7 +33,7 @@
 		</div>
 		<div class="form">
 			<div class="label">生年月日：</div>
-			<div class="input" th:text="${employee.birthday}"></div>
+			<div class="input" th:text="${#dates.format(employee.birthday,'yyyy/MM/dd')}"></div>
 		</div>
 		<div class="form">
 			<div class="label">権限：</div>
@@ -42,21 +45,21 @@
 		<div class="form">
 			<div class="label">部署名：</div>
 			<div class="input" th:text="${employee.department.deptName}"></div>
+
 		</div>
-		<form th:action="@{/delete/{id}(id=${employee.empId})}" method="post">
-			<div class="form">
-				<div class="label"></div>
-				<div class="input">
-					<input type="hidden" name="empId" th:value="${employee.empId}" />
-					<input type="submit" value="削除" />
-				</div>
-			</div>
-		</form>
 		<form th:action="@{/list}">
 			<div class="form">
 				<div class="label"></div>
 				<div class="input">
 					<input type="submit" value="戻る" />
+				</div>
+			</div>
+		</form>
+		<form th:action="@{/delete/delete_check/{id}(id=${employee.empId})}" method="post">
+			<div class="form">
+				<div class="label"></div>
+				<div class="input">
+					<input type="submit" value="削除"/>
 				</div>
 			</div>
 		</form>

@@ -51,7 +51,7 @@ public class IndexTest {
 	public void 正常系_ログイン画面表示_タイトル() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\00_IndexTest\\";
 

@@ -7,72 +7,79 @@
 </head>
 
 <body class="admin user_list">
-	<article><h3>社員一覧画面</h3></article>
-
-
-	<!-- 管理者権限がある場合のみ新規登録リンクを表示 -->
-	<th:block th:if="${session.user.authority == 2}">
+	<h3>社員一覧画面</h3>
+	<!--	<th:block th:if="${isAdmin}">-->
+	<th:block th:if="${session.user.authority==2}">
 		<div class="regist_link">
 			<a th:href="@{/regist/input}">新規社員登録</a>
 		</div>
 	</th:block>
-
-	<!-- 社員情報が存在しない場合 -->
+	<!--	</th:block>-->
 	<th:block th:if="${#lists.isEmpty(employees)}">
 		<div class="message">
 			<p class="back_to_top_message">該当する社員は存在しません。</p>
-			<p class="back_to_top_link"><a th:href="@{/list}">一覧表示に戻る</a></p>
+			<p class="back_to_top_link"><a th:href="@{/user/list}">一覧表示に戻る</a></p>
 		</div>
 	</th:block>
-
-	<!-- 社員情報が存在する場合 -->
 	<table class="list_table" th:if="${not #lists.isEmpty(employees)}">
 		<tr>
 			<th>社員ID</th>
 			<th>社員名</th>
-			<th:block th:if="${session.user.authority == 2}">
+			<th:block th:if="${session.user.authority==2}">
 				<th class="gender">性別</th>
 				<th class="address">住所</th>
 				<th class="birthday">生年月日</th>
 				<th class="authority">権限</th>
+
 			</th:block>
-			<th class="deptName">部署名</th>
-			<th:block th:if="${session.user.authority == 2}">
-				<th class="button">変更</th>
-				<th class="button">削除</th>
+			<th>部署名</th>
+
+
+			<th:block th:if="${session.user.authority==2}">
+
+				<th>変更</th>
+
+				<th>削除</th>
+
 			</th:block>
 		</tr>
 
 		<tr th:each="employee : ${employees}">
+
 			<td th:text="${employee.empId}"></td>
 			<td th:text="${employee.empName}"></td>
-			
-			
-			<th:block th:if="${session.user.authority == 2}">
-				
-				<td th:if="${employee.gender != 1}">女性</td>
-				<td th:if="${employee.gender == 1}">男性</td>
-				<td th:text="${employee.address}"></td>
-				<td th:text="${employee.birthday}"></td>
-				<td th:if="${employee.authority == 2}">管理者</td>
-				<td th:if="${employee.authority == 1}">一般</td>
-			</th:block>
-			<td class="deptName" th:text="${employee.department.deptName}"></td>
 
-			<!-- 管理者のみ変更・削除可能 -->
-			<th:block th:if="${session.user.authority == 2 }">
-				<td class="button">
-					<a class="button-style" th:href="@{/update/input/{id}(id=${employee.empId})}">変更</a>
+			<th:block th:if="${session.user.authority==2}">
+				<td th:switch="${employee.gender}">
+					<span th:case="1">男性</span>
+					<span th:case="2">女性</span>
 				</td>
-				<td class="button">
-					<a class="button-style" th:href="@{/delete/confirm/{id}(id=${employee.empId})}">削除</a>
+				<td th:text="${employee.address}"></td>
+				<td th:text="${#dates.format(employee.birthday,'yyyy/MM/dd')}"></td>
+				<td th:switch="${employee.authority}">
+					<span th:case="1">一般</span>
+					<span th:case="2">管理者</span>
 				</td>
 			</th:block>
-			<!--            <th:block th:unless="${session.user.authority ==  }">-->
-			<!--                <td class="button"></td>-->
-			<!--                <td class="button"></td>-->
-			<!--            </th:block>-->
+
+			<td class="deptName" th:text="${employee.department.deptName}"></td>
+			<th:block th:if="${session.user.authority==2}">
+
+				<td class="button">
+					<form th:action="@{/update/input/{id}(id=${employee.empId})}">
+						<input type="submit" value="変更">
+					</form>
+				</td>
+				
+				<td class="button">
+					<form th:action="@{/delete/delete_check/{id}(id=${employee.empId})}" method="get">
+						<input type="submit" value="削除">
+					</form>
+				</td>
+
+			</th:block>
 		</tr>
+
 	</table>
 </body>
 

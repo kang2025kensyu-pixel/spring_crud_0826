@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout_4block :: layout(~{::body/content()})}">
-
 <head>
 	<title>社員登録確認 </title>
 	<meta charset="UTF-8" />
 </head>
-
 <body class="admin user_regist_check_admin">
 	<article>
 		<h3>社員登録確認画面</h3>
@@ -32,7 +30,7 @@
 		</div>
 		<div class="form">
 			<div class="label">生年月日：</div>
-			<div class="input" th:text="${employee.birthday}"></div>
+			<div class="input" th:text="${#dates.format(employee.birthday,'yyyy/MM/dd')}"></div>
 		</div>
 		<div class="form">
 			<div class="label">権限：</div>
@@ -76,13 +74,7 @@
 					<input type="submit" value="戻る" />
 				</div>
 			</div>
-
-
-	</div>
-
-	</form>
-
+		</form>
 	</div>
 </body>
-
 </html>

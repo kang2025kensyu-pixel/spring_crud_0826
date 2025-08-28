@@ -72,7 +72,7 @@ public class UpdateEmployeeTest {
 	public void 正常系_社員変更操作_変更完了_管理者権限() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\07_UpdateEmployeeTest\\";
 
@@ -193,7 +193,7 @@ public class UpdateEmployeeTest {
 	public void 正常系_社員変更操作_入力画面_戻るボタンを押下する() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\07_UpdateEmployeeTest\\";
 
@@ -205,7 +205,7 @@ public class UpdateEmployeeTest {
 
 		// スクリーンショット
 		tempFileList.add(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE));
-		
+
 		// ボタンを押下し送信
 		buttonUpdate.submit();
 
@@ -243,7 +243,7 @@ public class UpdateEmployeeTest {
 	public void 正常系_社員変更操作_確認画面_戻るボタンを押下する() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\07_UpdateEmployeeTest\\";
 
@@ -308,7 +308,7 @@ public class UpdateEmployeeTest {
 	public void 正常系_社員変更操作_変更完了_一般権限() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\07_UpdateEmployeeTest\\";
 
@@ -379,7 +379,7 @@ public class UpdateEmployeeTest {
 
 		// スクリーンショット
 		tempFileList.add(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE));
-		
+
 		// 検証のため要素取得
 		WebElement articleCheckTitle = webDriver.findElement(By.cssSelector("article h3"));
 		WebElement checkEmpNameElement = webDriver.findElement(By.cssSelector(".update .form:nth-of-type(2) .input"));

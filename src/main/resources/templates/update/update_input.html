@@ -9,8 +9,7 @@
 <body class="admin user_update_input_admin">
 	<h3>社員変更入力画面</h3>
 	<div class="update">
-		<form th:action="@{'/update/complete_check/' + ${employee.empId}}" method="post" th:object="${employee}">
-
+<form method="post" th:action="@{/update/complete/{empId}(empId=${employee.empId})}" th:object="${employee}">
 
 			<p>
 				<span th:each="error:${#fields.detailedErrors()}">
@@ -68,7 +67,7 @@
 						<option th:each="dept : ${departments}" th:value="${dept.deptId}" th:text="${dept.deptName}">
 						</option>
 
-						
+
 					</select>
 				</div>
 			</div>

@@ -72,10 +72,10 @@ public class SearchEmpNameTest {
 	public void 正常系_社員名検索操作_入力_郎() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\04_SearchEmpNameTest\\";
-		
+
 		doLogin();
 
 		// 要素が操作可能になるまでの待機時間
@@ -88,10 +88,10 @@ public class SearchEmpNameTest {
 		searchEmpNameElement.sendKeys("郎");
 		// スクリーンショット
 		tempFileList.add(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE));
-		
+
 		// 社員名検索欄のボタンを押下し送信
 		searchEmpNameElement.submit();
-		
+
 		// スクリーンショット
 		tempFileList.add(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE));
 
@@ -121,7 +121,7 @@ public class SearchEmpNameTest {
 	@Order(2)
 	public void 正常系_社員名検索操作_入力_空文字() {
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\04_SearchEmpNameTest\\";
 		doLogin();
@@ -129,15 +129,15 @@ public class SearchEmpNameTest {
 		// 要素が操作可能になるまでの待機時間
 		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
 		WebElement searchEmpNameElement = wait.until(ExpectedConditions.elementToBeClickable (By.name("empName")));
-		
+
 		// 社員名の入力欄をクリア
 		searchEmpNameElement.clear();
 		// スクリーンショット
 		tempFileList.add(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE));
-		
+
 		// 社員名の検索ボタンを押下し送信
 		searchEmpNameElement.submit();
-		
+
 		// スクリーンショット
 		tempFileList.add(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE));
 
@@ -170,7 +170,7 @@ public class SearchEmpNameTest {
 	@Order(3)
 	public void 正常系_社員名検索操作_入力_上() {
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\04_SearchEmpNameTest\\";
 		doLogin();
@@ -185,7 +185,7 @@ public class SearchEmpNameTest {
 		searchEmpNameElement.sendKeys("上");
 		// スクリーンショット
 		tempFileList.add(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE));
-		
+
 		// 社員名検索のボタンを押下し送信
 		searchEmpNameElement.submit();
 

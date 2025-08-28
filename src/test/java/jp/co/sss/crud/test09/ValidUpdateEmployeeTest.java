@@ -73,7 +73,7 @@ public class ValidUpdateEmployeeTest {
 	public void 異常系_社員変更操作_パスワード_空文字入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidUpdateEmployeeTest\\";
 
@@ -152,7 +152,7 @@ public class ValidUpdateEmployeeTest {
 	public void 異常系_社員変更操作_パスワード_桁数オーバー入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidUpdateEmployeeTest\\";
 
@@ -230,7 +230,7 @@ public class ValidUpdateEmployeeTest {
 	public void 異常系_社員変更操作_社員名_空文字入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidUpdateEmployeeTest\\";
 
@@ -310,7 +310,7 @@ public class ValidUpdateEmployeeTest {
 	public void 異常系_社員変更操作_社員名_桁数オーバー入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidUpdateEmployeeTest\\";
 
@@ -389,7 +389,7 @@ public class ValidUpdateEmployeeTest {
 	public void 異常系_社員変更操作_住所_空文字入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidUpdateEmployeeTest\\";
 
@@ -468,7 +468,7 @@ public class ValidUpdateEmployeeTest {
 	public void 異常系_社員変更操作_住所_桁数オーバー入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidUpdateEmployeeTest\\";
 
@@ -545,7 +545,7 @@ public class ValidUpdateEmployeeTest {
 	public void 異常系_社員変更操作_生年月日_空文字入力メッセージ出力() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidUpdateEmployeeTest\\";
 
@@ -589,7 +589,7 @@ public class ValidUpdateEmployeeTest {
 		// スクリーンショット
 		tempFileList.add(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE));
 
-		// ボタン押下し送信		
+		// ボタン押下し送信
 		webDriver.findElement(By.cssSelector("input[value='変更']")).submit();
 
 		// スクリーンショット
@@ -621,7 +621,7 @@ public class ValidUpdateEmployeeTest {
 	@Order(8)
 	public void 異常系_社員変更操作_生年月日_非対応日付形式入力メッセージ出力() {
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidUpdateEmployeeTest\\";
 
@@ -699,7 +699,7 @@ public class ValidUpdateEmployeeTest {
 	@Order(9)
 	public void 異常系_社員変更操作_生年月日_非存在日付入力メッセージ出力() {
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\09_ValidUpdateEmployeeTest\\";
 

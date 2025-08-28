@@ -21,7 +21,7 @@ public class BeanCopy {
 	    public static Employee copyFormToEmployee(EmployeeForm form) {
 	        Employee entity = new Employee();
 	        Department department = new Department();
-	
+
 	        entity.setEmpId(form.getEmpId());
 	        entity.setEmpPass(form.getEmpPass());
 	        entity.setEmpName(form.getEmpName());
@@ -29,13 +29,13 @@ public class BeanCopy {
 	        entity.setAddress(form.getAddress());
 	        entity.setBirthday(form.getBirthday());
 	        entity.setAuthority(form.getAuthority());
-	
+
 	        department.setDeptId(form.getDeptId());
 	        entity.setDepartment(department);
-	
+
 	        return entity;
 	    }
-	
+
 	    /**
 	     * エンティティ(Employee)の各フィールドの値をFormクラスにコピー
 	     *
@@ -44,7 +44,7 @@ public class BeanCopy {
 	     * @return Formクラス
 	     */
 	    public static EmployeeForm copyEntityToForm(Employee entity, EmployeeForm form) {
-	
+
 	        form.setEmpId(entity.getEmpId());
 	        form.setEmpPass(entity.getEmpPass());
 	        form.setEmpName(entity.getEmpName());
@@ -53,7 +53,7 @@ public class BeanCopy {
 	        form.setBirthday(entity.getBirthday());
 	        form.setAuthority(entity.getAuthority());
 	        form.setDeptId(entity.getDepartment().getDeptId());
-	
+
 	        return form;
 	    }
 }

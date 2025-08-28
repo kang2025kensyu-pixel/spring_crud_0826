@@ -73,7 +73,7 @@ public class DeleteEmployeeTest {
 	public void 正常系_社員削除操作_削除完了_管理者権限() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\08_DeleteEmployeeTest\\";
 
@@ -81,8 +81,7 @@ public class DeleteEmployeeTest {
 
 		/*****社員一覧から確認画面へ*****/
 		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
-		WebElement buttonUpdate = wait.until(ExpectedConditions.elementToBeClickable(
-				By.cssSelector("table tr:nth-of-type(4) td:nth-of-type(9) input[type='submit']")));
+		WebElement buttonUpdate = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("table tr:nth-of-type(4) td:nth-of-type(9) input[type='submit']")));
 
 		// スクリーンショット
 		tempFileList.add(((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE));
@@ -161,7 +160,7 @@ public class DeleteEmployeeTest {
 	public void 正常系_社員削除操作_確認画面_戻るボタンを押下する() {
 
 		// スクリーンショットのリスト
-		ArrayList<File> tempFileList = new ArrayList<File>();
+		ArrayList<File> tempFileList = new ArrayList<>();
 		// スクショ保存パス
 		String screenshotPath = "screenshots\\08_DeleteEmployeeTest\\";
 
@@ -199,10 +198,10 @@ public class DeleteEmployeeTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		// 検証のため要素を取得
 		WebElement articleCompleteTitle = webDriver.findElement(By.cssSelector("article h3"));
-		
+
 		//検証
 		assertEquals("社員一覧画面", articleCompleteTitle.getText());
 
